@@ -16,9 +16,10 @@ while (BIGCOUNT <= 1000000):
     binary = str(bin(int.from_bytes('The quick brown fox jumps over the lazy dog THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG!!@#$%^&*()<>?:"{} . , / \ |[] 0 1 2 3 4 5 6 7 8 9 + - _ = ~ `'.encode(), 'big')))
     binary = re.sub('b', '', binary)
 
-    #This is then put into an array
+    #This is then put into an array of binary pairs
     binaryArray = [binary[i:i+n] for i in range(0, len(binary), n)]
 
+    #Then the pairs are converted to nucleotides
     newArray = ['A' if x=='00' else x for x in binaryArray]
     newArray = ['T' if x=='11' else x for x in newArray]
     newArray = ['G' if x=='01' else x for x in newArray]
@@ -27,7 +28,7 @@ while (BIGCOUNT <= 1000000):
     lengthArray = len(newArray)
     knownArray2 = list(newArray)
 
-
+    #Adds the 12 nucleotide sequence to reduce errors
     count = 24
     con = 1
     while count < len(newArray):
@@ -53,8 +54,8 @@ while (BIGCOUNT <= 1000000):
     knownArray = list(newArray)
 
 
-
-
+    #TO-DO remove this and add to new file
+    #Adds mutations to genetic code
     newCount = 0
     counter = 0
     mutationsCount = 0
