@@ -13,3 +13,6 @@ class TestDnaEncoder():
         convertTest1.normalize("h")
         assert convertTest1.convert() == ['G', 'C', 'C', 'A']
         assert convertTest1.getNucleotideArray() == ['G', 'C', 'C', 'A']
+        convertTest2 = de.DNAEncoder()
+        assert convertTest2.getNucleotideArray() == []
+        assert convertTest2.convert() == []

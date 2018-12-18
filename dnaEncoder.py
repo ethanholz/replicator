@@ -5,19 +5,16 @@ class DNAEncoder:
     def __init__(self):
         self.binaryArray = []
         self.nucleotideArray = []
-        
+
+    #This section of code is used for the express purpose of encoding binary information
+    #Creates a demilited binary array
     def normalize(self, stringIn):
         binary =  str(bin(int.from_bytes(stringIn.encode(), 'big')))
         binary = re.sub('b', '', binary)
         self.binaryArray = [binary[i:i+2] for i in range(0, len(binary), 2)]
         return self.binaryArray
-    
-    def getBinaryArray(self):
-        return self.binaryArray
 
-    def getNucleotideArray(self):
-        return self.nucleotideArray
-
+    #Converts to nucleotides
     def convert(self):
         for x in self.binaryArray:
             if x == '00':
@@ -30,4 +27,10 @@ class DNAEncoder:
                 self.nucleotideArray.append('C')
             else:
                 print("Error")
+        return self.nucleotideArray
+
+    def getBinaryArray(self):
+        return self.binaryArray
+
+    def getNucleotideArray(self):
         return self.nucleotideArray
