@@ -3,27 +3,21 @@
 import binascii
 import re
 import random
+import dnaEncoder as de
 
-BIGCOUNT = 1
+BIGCOUNT = 0
 div = 0
 effcount = 0
 
 
-while (BIGCOUNT <= 1):
+while (BIGCOUNT < 10):
     n = 2
-    #This section of code is used for the express purpose of encoding binary information
-    #This line converts a string to a binary string and is the delimited to raw binary
-    binary = str(bin(int.from_bytes('The quick brown fox jumps over the lazy dog THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG!!@#$%^&*()<>?:"{} . , / \ |[] 0 1 2 3 4 5 6 7 8 9 + - _ = ~ `'.encode(), 'big')))
-    binary = re.sub('b', '', binary)
+    #Uses DNAEncoder class to slim down encoding process in efficiency test
+    randString = de.DNAEncoder()
+    randString.normalize('The quick brown fox jumps over the lazy dog THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG!!@#$%^&*()<>?:"{} . , / \ |[] 0 1 2 3 4 5 6 7 8 9 + - _ = ~ `')
+    randString.convert()
+    newArray = randString.getNucleotideArray()
 
-    #This is then put into an array of binary pairs
-    binaryArray = [binary[i:i+n] for i in range(0, len(binary), n)]
-
-    #Then the pairs are converted to nucleotides
-    newArray = ['A' if x=='00' else x for x in binaryArray]
-    newArray = ['T' if x=='11' else x for x in newArray]
-    newArray = ['G' if x=='01' else x for x in newArray]
-    newArray = ['C' if x=='10' else x for x in newArray]
     lengthArray = len(newArray)
     knownArray2 = list(newArray)
 
@@ -158,6 +152,7 @@ while (BIGCOUNT <= 1):
     div = div + 1
     effcount = effcount + efCount
     BIGCOUNT = BIGCOUNT + 1
+    print(BIGCOUNT)
 
 
 effiency = effcount/div
