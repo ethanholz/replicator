@@ -9,7 +9,7 @@ div = 0
 effcount = 0
 
 
-while (BIGCOUNT <= 1000000):
+while (BIGCOUNT <= 1):
     n = 2
     #This section of code is used for the express purpose of encoding binary information
     #This line converts a string to a binary string and is the delimited to raw binary
@@ -24,7 +24,6 @@ while (BIGCOUNT <= 1000000):
     newArray = ['T' if x=='11' else x for x in newArray]
     newArray = ['G' if x=='01' else x for x in newArray]
     newArray = ['C' if x=='10' else x for x in newArray]
-
     lengthArray = len(newArray)
     knownArray2 = list(newArray)
 
